@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
 //components
 import EntertainmentCardSlider from '../components/Entertainment/EntertainmentCard.Component';
 import HeroCarousel from '../components/HeroCarousel/HeroCarousel.Component';
@@ -7,9 +8,36 @@ import PosterSlider from '../components/PosterSlider/PosterSlider.Component';
 import DefaultLayoutHOC from '../layouts/Default.layout';
 
 const HomePage = () => {
-  const [recommendedMovies, setrecommendedMovies] = useState([]);
-  const [premierMovies, setpremierMovies] = useState([]);
-  const [onlineStreamEvents, setonlineStreamEvents] = useState([]);
+  const [recommendedMovies, setRecommendedMovies] = useState([]);
+  const [premierMovies, setPremierMovies] = useState([]);
+  const [onlineStreamEvents, setOnlineStreamEvents] = useState([]);
+
+useEffect(() => {
+  const reqPopularMovies = async ()=> {
+
+    const getPopularMovies = await axios.get("/movie/popular");
+    setRecommendedMovies(getPopularMovies.data.results);
+  };
+  reqPopularMovies();
+}, []);
+
+useEffect(() => {
+  const reqTopratedMovies = async ()=> {
+
+    const getTopratedMovies = await axios.get("/movie/top_rated");
+    setPremierMovies(getTopratedMovies.data.results);
+  };
+  reqTopratedMovies();
+}, []);
+
+useEffect(() => {
+  const reqUpcomingMovies = async ()=> {
+
+    const getUpcomingMovies = await axios.get("/movie/upcoming");
+    setOnlineStreamEvents(getUpcomingMovies.data.results);
+  };
+  reqUpcomingMovies();
+}, []);
 
   return (
     <>
@@ -22,7 +50,7 @@ const HomePage = () => {
     <div className="container mx-auto px-4 md:px-12 my-8">
      <PosterSlider
      title = "Recommended Movies"
-     subject = "List of recommended movies"
+     subTitle = "List of recommended movies"
      posters = {recommendedMovies}
      isDark = {false}
      />
