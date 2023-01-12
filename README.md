@@ -91,6 +91,7 @@ Movie.Hoc.jsx => Movie.Page.jsx
 #Components
 
 Cast            => Cast.Component.jsx
+
 Entertainment   => EntertainmentCard.Component.jsx
 
 HeroCarousel    => HeroCarousel.Component.jsx
@@ -103,8 +104,11 @@ NavBar          => MovieNavBar.Component.jsx
                 => NavBar.Component.jsx       
 
 PaymentModal    => Payment.Component.jsx
+
 PlayFilters     => PlayFilters.Component.jsx
+
 Posters         => Poster.Component.jsx
+
 PosterSlider    => PosterSlider.Component.jsx 
 
 

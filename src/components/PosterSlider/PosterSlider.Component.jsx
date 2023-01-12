@@ -47,17 +47,31 @@ const PosterSlider = (props) => {
             <h3 className={`text-2xl font-bold ${isDark ? "text-white" : "text-black"}`}>
                 {title}
             </h3>
-            <p className={`text-sm ${isDark ? "text-white" : "text-gray-800"}`}> 
-            {subTitle} 
-            </p>
+            <p className={`text-sm  ${isDark ? "text-white" : "text-gray-800"}`}>
+                {subTitle}
+                </p>
         </div>
-        <Slider {...settings}>
-        {posters.map((each, index) => (
-            <Poster {...each} isDark = {isDark} key={index} />
-            ))}
-        </Slider>
+       {config && (
+         <Slider {...config}>
+         {posters.map((each,index)=>(
+             <Poster {...each} isDark={isDark} key={index}/>
+             ))}
+         {/* <Poster /> */}
+         </Slider>
+       )}
+
+      {!config && (
+         <Slider {...settings}>
+         {posters.map((each,index)=>(
+             <Poster {...each} isDark={isDark} key={index}/>
+             ))}
+         {/* <Poster /> */}
+         </Slider>
+       )}
+
         </>
-    )
+     
+    );
 }
 
 export default PosterSlider;
