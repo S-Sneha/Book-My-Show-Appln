@@ -8,7 +8,7 @@ const DefaultLayoutHOC =
    <div> 
     <NavBar/>
     <Component {...props} />
-    <div> Footer </div>
+    {/* Footer */}
    </div>
    )
 } 
